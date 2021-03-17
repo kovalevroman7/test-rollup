@@ -2,6 +2,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import { babel } from '@rollup/plugin-babel';
 import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss'
 
 const extensions = ['.js', '.jsx'];
 
@@ -13,6 +14,7 @@ export default {
     },
     plugins: [
         nodeResolve({ extensions }),
+        postcss({ modules: true }),
         replace({
             preventAssignment: true,
             'process.env.NODE_ENV': JSON.stringify('develop'),

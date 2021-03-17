@@ -29884,13 +29884,42 @@ var reactDom = createCommonjsModule(function (module) {
 }
 });
 
-var Test = function Test() {
-  return /*#__PURE__*/react.createElement("div", null, "Hello");
+function styleInject(css, ref) {
+  if ( ref === void 0 ) ref = {};
+  var insertAt = ref.insertAt;
+
+  if (!css || typeof document === 'undefined') { return; }
+
+  var head = document.head || document.getElementsByTagName('head')[0];
+  var style = document.createElement('style');
+  style.type = 'text/css';
+
+  if (insertAt === 'top') {
+    if (head.firstChild) {
+      head.insertBefore(style, head.firstChild);
+    } else {
+      head.appendChild(style);
+    }
+  } else {
+    head.appendChild(style);
+  }
+
+  if (style.styleSheet) {
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+}
+
+var css_248z = ".App_item__3wa8p {\r\n    color: red;\r\n}\r\n";
+var classes = {"item":"App_item__3wa8p"};
+styleInject(css_248z);
+
+var App = function App() {
+  console.log('classes', classes);
+  return /*#__PURE__*/react.createElement("div", {
+    className: classes.item
+  }, "Item");
 };
 
-var foo = function foo() {
-  console.log('its foo');
-};
-
-foo();
-reactDom.render( /*#__PURE__*/react.createElement(Test, null), document.getElementById('app'));
+reactDom.render( /*#__PURE__*/react.createElement(App, null), document.getElementById('app'));
