@@ -29911,7 +29911,7 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".App_item__3wa8p {\r\n    color: red;\r\n}\r\n";
+var css_248z = ".App_item__3wa8p {\r\n    color: blue;\r\n}\r\n";
 var classes = {"item":"App_item__3wa8p"};
 styleInject(css_248z);
 
@@ -29919,7 +29919,7 @@ var App = function App() {
   console.log('classes', classes);
   return /*#__PURE__*/react.createElement("div", {
     className: classes.item
-  }, "Item");
+  }, "Item1234");
 };
 
 reactDom.render( /*#__PURE__*/react.createElement(App, null), document.getElementById('app'));
